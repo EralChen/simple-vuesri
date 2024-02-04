@@ -9,8 +9,8 @@ dependencies:
     specifier: ^4.28.10
     version: 4.28.10
   '@vuesri/core':
-    specifier: ^0.0.51
-    version: 0.0.51
+    specifier: ^1.0.8
+    version: 1.0.8(@arcgis/core@4.28.10)(@vunk/core@0.0.0-alpha.111)(vue@3.4.14)
   '@vunk/core':
     specifier: 0.0.0-alpha.111
     version: 0.0.0-alpha.111
@@ -457,6 +457,10 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
 
+  /@types/web-bluetooth@0.0.20:
+    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+    dev: false
+
   /@vitejs/plugin-vue@4.6.2(vite@5.0.11)(vue@3.4.14):
     resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -532,8 +536,45 @@ packages:
   /@vue/shared@3.4.14:
     resolution: {integrity: sha512-nmi3BtLpvqXAWoRZ6HQ+pFJOHBU4UnH3vD3opgmwXac7vhaHKA9nj1VeGjMggdB9eLtW83eHyPCmOU1qzdsC7Q==}
 
-  /@vuesri/core@0.0.51:
-    resolution: {integrity: sha512-w1TDYpTLhnxDTMfDSnoK1+ZNv8muwC1OYB0ziewYAZOLepk/7KEdSg1ZpMAboeYTKZnNKgT0MWWii+io3colHw==}
+  /@vuesri/core@1.0.8(@arcgis/core@4.28.10)(@vunk/core@0.0.0-alpha.111)(vue@3.4.14):
+    resolution: {integrity: sha512-y3tTekuHCgZ2StyTXgsCBVBrSjk4yiq2mzX5amtyDMkd6Of2dWYh2+c73qgpoUhdxt2hTm+dTjXjGu6lmFp5Sw==}
+    peerDependencies:
+      '@arcgis/core': '>=4.18.0'
+      '@vunk/core': '>=0.0.0-alpha.111'
+      vue: '>=3.3.0'
+    dependencies:
+      '@arcgis/core': 4.28.10
+      '@vueuse/core': 10.7.2(vue@3.4.14)
+      '@vunk/core': 0.0.0-alpha.111
+      lodash-es: 4.17.21
+      vue: 3.4.14
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
+
+  /@vueuse/core@10.7.2(vue@3.4.14):
+    resolution: {integrity: sha512-AOyAL2rK0By62Hm+iqQn6Rbu8bfmbgaIMXcE3TSr7BdQ42wnSFlwIdPjInO62onYsEMK/yDMU8C6oGfDAtZ2qQ==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 10.7.2
+      '@vueuse/shared': 10.7.2(vue@3.4.14)
+      vue-demi: 0.14.7(vue@3.4.14)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/metadata@10.7.2:
+    resolution: {integrity: sha512-kCWPb4J2KGrwLtn1eJwaJD742u1k5h6v/St5wFe8Quih90+k2a0JP8BS4Zp34XUuJqS2AxFYMb1wjUL8HfhWsQ==}
+    dev: false
+
+  /@vueuse/shared@10.7.2(vue@3.4.14):
+    resolution: {integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA==}
+    dependencies:
+      vue-demi: 0.14.7(vue@3.4.14)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
     dev: false
 
   /@vunk/core@0.0.0-alpha.111:
@@ -770,6 +811,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /vue-demi@0.14.7(vue@3.4.14):
+    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.14
+    dev: false
 
   /vue@3.4.14:
     resolution: {integrity: sha512-Rop5Al/ZcBbBz+KjPZaZDgHDX0kUP4duEzDbm+1o91uxYUNmJrZSBuegsNIJvUGy+epLevNRNhLjm08VKTgGyw==}

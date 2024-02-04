@@ -1,9 +1,11 @@
 <script setup>
 import { VaMapView, VaTdtBasemap } from '@vuesri/core'
+
 const defaultOptions = {
   center: [120, 30],
   zoom: 9,
 }
+
 </script>
 <template>
   <VaMapView :defaultOptions="defaultOptions">
