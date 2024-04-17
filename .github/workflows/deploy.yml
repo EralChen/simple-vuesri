@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v2
 
     - name: Install dependencies
@@ -23,7 +24,6 @@ jobs:
         DOC_ENV: production
         NODE_OPTIONS: --max-old-space-size=4096
 
-
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.3.4
       with:
@@ -33,8 +33,6 @@ jobs:
         force: true
         commit-message: website deploy
         repository-name: EralChen/simple-vuesri
-    
-        
 
     - name: Cleanup
       run: rm -rf docs/dist
