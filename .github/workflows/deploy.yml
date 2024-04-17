@@ -1,56 +1,41 @@
-
-# deploy.yml
 name: Build and Deploy
 
-# 在 main 分支上 push 时触发 action
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
-    # 使用 ubuntu 系统
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
 
-    # https://github.com/actions/checkout
-    # 签出您的存储库，以便您的工作流可以访问它
-    - uses: actions/checkout@v4
-
-    # 使用 pnpm 安装依赖
     - name: Install dependencies
       run: | 
         npm install -g pnpm
         pnpm install
 
-    # 可以按照需要，执行一些打包前的操作，如复制文件
-    - name: Prebuild
-      run: |
-        npm run copy
-
-
-    # 打包
     - name: Build
       run: npm run build
       env:
+        DOC_ENV: production
         NODE_OPTIONS: --max-old-space-size=4096
 
-	
+
     - name: Deploy
-      # https://github.com/JamesIves/github-pages-deploy-action
       uses: JamesIves/github-pages-deploy-action@v4.3.4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
+        branch: gh-page
         folder: dist
+        force: true
         commit-message: website deploy
         repository-name: EralChen/simple-vuesri
-        force: true
+    
         
 
-    # 清理 dist 文件
     - name: Cleanup
       run: rm -rf docs/dist
-      
+ 
