@@ -1,1 +1,0 @@
-import{eS as e,eT as n}from"./index-e4odrhqs.js";import{a as s}from"./queryTopFeatures-hCAaCI-C.js";async function f(o,t,a){const r=e(o);return(await s(r,n.from(t),{...a})).data.count}export{f as executeForTopCount};
