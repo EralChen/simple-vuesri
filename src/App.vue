@@ -1,7 +1,8 @@
 <script setup>
+import { VaSceneView } from '../components/scene-view'
 import { VaTdtBasemap } from '../components/tdt-base-map'
 import { VaMapView } from '../components/map-view'
-import Mvt4326 from './mvt4326.vue';
+import Mvt4326 from './Mvt4326.vue'
 const defaultOptions = {
   center: [120, 30],
   zoom: 9,
@@ -10,15 +11,11 @@ const defaultOptions = {
 
 </script>
 <template>
-  <VaMapView :defaultOptions="defaultOptions">
-    <!-- 加载天地图 -->
-    <!-- 注释掉天地图图， Mvt4326 似乎时以3857坐标系叠加导致显示问题 -->
+  <VaSceneView :defaultOptions="defaultOptions">
     <VaTdtBasemap :type="'vec_c'" />
 
-    <!-- 加载 4326mvt -->
     <Mvt4326></Mvt4326>
-
-  </VaMapView>
+  </VaSceneView>
 </template>
 
 <style>

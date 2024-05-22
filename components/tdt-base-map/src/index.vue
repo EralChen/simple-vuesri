@@ -1,7 +1,7 @@
 <script lang="ts">
 import { props, emits } from './ctx'
 import { computed, defineComponent, onUnmounted } from 'vue'
-import { origin, lods } from './tile-info'
+import { origin, lods, fullExtent } from './tile-info'
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer'
 import { useView } from '@vuesri/core'
 import Basemap from '@arcgis/core/Basemap'
@@ -45,6 +45,10 @@ export default defineComponent({
           + `&TILEMATRIXSET=${urlParams.value.typeSR}&FORMAT=tiles&TILEMATRIX={level}&TILEROW={row}&TILECOL={col}`
           + `&tk=${props.token}`,
         tileInfo,
+        fullExtent: {
+          ...fullExtent,
+          spatialReference: props.spatialReference,
+        },
         spatialReference: props.spatialReference,
       }
 

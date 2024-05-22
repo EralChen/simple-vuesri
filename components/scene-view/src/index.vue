@@ -1,24 +1,24 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, provide, ref, StyleValue } from 'vue'
-import Map from '@arcgis/core/Map'
-import MapView from '@arcgis/core/views/MapView'
 import { props, emits } from './ctx'
-import LayerList from '@arcgis/core/widgets/LayerList'
+import { computed, defineComponent, onMounted, provide, ref, StyleValue } from 'vue'
+import { SceneView, Map as EsriMap } from '@vuesri/core/arcgis'
+import LayerList from "@arcgis/core/widgets/LayerList";
 
 export default defineComponent({
-  name: 'VaMapView',
+  name: 'VaSceneView',
+
   inheritAttrs: false,
   props,
   emits,
   setup (props, { emit }) {
     const viewNode = ref<HTMLDivElement>()
-    // init
-    const map = new Map()
-    const view:__esri.MapView = new MapView({
-      map: map,
+    // core
+    const map = new EsriMap()
+    const view = new SceneView({
+      map,
       ...props.defaultOptions,
     })
-    view.ui.components = []
+    // view.ui.components = []
 
     const layerlist = new LayerList({
       view: view
@@ -29,15 +29,15 @@ export default defineComponent({
     });
 
 
-    // set cursor
+    /* set cursor */
     const eventCursor = ref('')
     const cursorStyle = computed(() => ({
-      '--va-map-view-cursor': props.cursor || eventCursor.value,
+      '--va-scene-view-cursor': props.cursor || eventCursor.value,
     }) as unknown as StyleValue)
+    /* set cursor end */
 
-    // provide
     provide('vaView', view)
-    provide('vaMapView', view)
+    provide('vaSceneView', view)
 
     onMounted(() => {
       view.container = viewNode.value as HTMLDivElement
@@ -57,18 +57,17 @@ export default defineComponent({
   <div
     ref="viewNode"
     :style="cursorStyle"
-    class="va-map-view va-view-x"
+    class="va-scene-view va-view-x"
     v-bind="$attrs"
   >
     <slot></slot>
   </div>
   <slot name="after"></slot>
 </template>
-
 <style>
-.va-map-view{
+.va-scene-view{
   width: 100%;
   height: 100%;
-  cursor: var(--va-map-view-cursor);
+  cursor: var(--va-scene-view-cursor);
 }
 </style>
