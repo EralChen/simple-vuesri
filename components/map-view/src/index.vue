@@ -3,6 +3,7 @@ import { computed, defineComponent, onMounted, provide, ref, StyleValue } from '
 import Map from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
 import { props, emits } from './ctx'
+import LayerList from "@arcgis/core/widgets/LayerList.js";
 
 export default defineComponent({
   name: 'VaMapView',
@@ -21,6 +22,14 @@ export default defineComponent({
     ;(window as any).__VA_MAP_VIEW__ = view
 
     view.ui.components = []
+
+    const layerlist = new LayerList({
+      view: view
+    });
+
+    view.ui.add(layerlist, {
+      position: "top-right"
+    });
 
     // set cursor
     const eventCursor = ref('')

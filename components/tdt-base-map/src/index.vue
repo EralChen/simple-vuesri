@@ -1,7 +1,7 @@
 <script lang="ts">
 import { props, emits } from './ctx'
 import { computed, defineComponent, onUnmounted } from 'vue'
-import { origin, lods } from './tile-info'
+import { origin, lods, fullExtent } from './tile-info'
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer'
 import { useView } from '@vuesri/core'
 import Basemap from '@arcgis/core/Basemap'
@@ -33,6 +33,7 @@ export default defineComponent({
       const tileInfo: __esri.TileInfoProperties = {
         origin: origin,
         spatialReference: props.spatialReference,
+        
       }
       tileInfo.lods = lods.slice(1, 19)
 
@@ -46,6 +47,10 @@ export default defineComponent({
           + `&tk=${props.token}`,
         tileInfo,
         spatialReference: props.spatialReference,
+        fullExtent: {
+          ...fullExtent,
+          spatialReference: props.spatialReference,
+        }
       }
 
       return data

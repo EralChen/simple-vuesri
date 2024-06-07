@@ -26,6 +26,7 @@ const source = new LocalMediaElementSource({
   ],
 })
 const layer = new MediaLayer({
+  title: '测试媒体图层',
   source: source
 })
 

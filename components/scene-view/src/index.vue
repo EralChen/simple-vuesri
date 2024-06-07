@@ -63,10 +63,7 @@ export default defineComponent({
     class="va-scene-view va-view-x"
     v-bind="$attrs"
   >
-    <ViewEvents
-      v-model:cursor="eventCursor"
-    ></ViewEvents>
-    <ViewWatchs></ViewWatchs>
+    
     <slot></slot>
   </div>
   <slot name="after"></slot>

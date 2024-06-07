@@ -2,6 +2,7 @@
 import { WebTileLayer } from '@vuesri/core/arcgis';
 import { useView } from '@vuesri/core/composables'
 import { computed } from 'vue'
+import { fullExtent } from '../components/tdt-base-map/src/tile-info';
 
 const type = 'cia_c'
 const token = 'f0175927031c1e12cb804b0c3b8cce4d'
@@ -25,6 +26,7 @@ const defaultOptions = computed(() => {
 
 
   const data = {
+    title: '测试注记图层, 希望叠到 media layer 之上',
     subDomains,
     urlTemplate: `https://{subDomain}.tianditu.gov.cn`
       + `/${type}/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0`
@@ -33,6 +35,7 @@ const defaultOptions = computed(() => {
       + `&tk=${token}`,
     tileInfo: baseLayer.tileInfo,
     spatialReference: baseLayer.spatialReference,
+    fullExtent: baseLayer.fullExtent
   }
 
   return data
