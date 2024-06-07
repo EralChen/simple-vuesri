@@ -17,6 +17,9 @@ export default defineComponent({
       map: map,
       ...props.defaultOptions,
     })
+
+    ;(window as any).__VA_MAP_VIEW__ = view
+
     view.ui.components = []
 
     // set cursor
